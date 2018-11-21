@@ -2,14 +2,6 @@
 
 print "This script demonstrates behavior of links\n";
 
-$realfiles = ["targetfile.txt", "targetdir/index.html"];
-
-print "\nRealfiles:\n";
-
-foreach ($realfiles as $path) {
-    printFilenameAndContents($path);
-}
-
 
 $linkedfiles = [
     // 3 symlinks to file in same directory
@@ -64,7 +56,7 @@ function printFilenameAndContents($path) {
 function getFileContents($path) {
     $contents = "";
     if (!is_link($path)) {
-        $contents = $contents + "ERROR: $path is not a link\n";
+        $contents = $contents . "ERROR: $path is not a link\n";
     }
     if ($fh = fopen($path, 'r')) {
         while (!feof($fh)) {
