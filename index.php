@@ -20,7 +20,13 @@ $linkedDirs = [
 ];
 
 $cwd = getcwd();
-shell_exec("rm $cwd/tmpcreated/*");
+
+// Delete anything in our temp dir
+$files = glob("$cwd/tmpcreated/*"); // get all file names
+foreach($files as $file){ // iterate files
+    if(is_file($file))
+        unlink($file); // delete file
+}
 
 $result = symlink("$cwd/targetdir/index.html", "$cwd/tmpcreated/targetdir_index.html.symlink_created_by_php");
 if (!$result) {
