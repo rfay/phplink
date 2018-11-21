@@ -23,7 +23,7 @@ $linkedfiles = [
     ];
 
 $linkedDirs = [
-    "targetdir",
+    "targetdir.linked_on_macos",
     
 ];
 print "\nSymlinks to files (including via symlinked directories):\n";
@@ -42,8 +42,10 @@ foreach ($linkedDirs as $path) {
     print "   $path: '" . getLinkContents($path) . "'\n";
 }
 
-print "Symlink contents (directory contents)\n"
+print "Symlink contents (directory contents)\n";
 
+
+/* ************ Utility functions *********** */
 function printFilenameAndContents($path) {
     print "   $path: '" . getFileContents($path) . "'\n";
 }
