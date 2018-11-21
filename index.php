@@ -2,7 +2,6 @@
 
 print "This script demonstrates behavior of links\n";
 
-
 $linkedfiles = [
     // 3 symlinks to file in same directory
     "targetfile.txt.symlink_created_on_macos",
@@ -12,20 +11,22 @@ $linkedfiles = [
     "targetdir_index.html.symlink_created_on_msys_winsymlinks",
     "targetdir_index.html.symlink_created_on_macos",
     "targetdir_index.html.symlink_created_in_container_on_windows",
-    "tmp/targetdir_index.html.symlink_created_by_php",
+    "tmpcreated/targetdir_index.html.symlink_created_by_php",
     ];
 
 $linkedDirs = [
     "targetdir.linked_on_macos",
-    "tmp/targetdir.symlink_created_by_php",
+    "tmpcreated/targetdir.symlink_created_by_php",
 ];
 
+$cwd = getcwd();
+shell_exec("rm $cwd/tmpcreated/*");
 
-$result = symlink("../targetdir/index.html", "tmp/targetdir_index.html.symlink_created_by_php");
+$result = symlink("$cwd/targetdir/index.html", "$cwd/tmpcreated/targetdir_index.html.symlink_created_by_php");
 if (!$result) {
     print "ERROR: symlink createion failed\n";
 }
-$result = symlink("../targetdir", "tmp/targetdir.symlink_created_by_php");
+$result = symlink("$cwd/targetdir", "$cwd/tmpcreated/targetdir.symlink_created_by_php");
 
 print "\nSymlinks to files (including via symlinked directories):\n";
 
