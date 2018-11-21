@@ -19,7 +19,7 @@ $linkedfiles = [
     // 3 symlinks to a *file* in a symlinked directory
     "targetdir_index.html.symlink_created_on_msys_winsymlinks",
     "targetdir_index.html.symlink_created_on_macos",
-    "targetdir_index.html.symlink_created_on_msys_winsymlinks"
+    "targetdir_index.html.symlink_created_in_container_on_windows"
     ];
 
 $linkedDirs = [
@@ -33,7 +33,7 @@ foreach ($linkedfiles as $path) {
 }
 
 
-print "Symlink contents (file symlinks):\n";
+print "\nSymlink contents (file symlinks):\n";
 
 foreach ($linkedfiles as $path) {
     print "   $path: '" . getLinkContents($path) . "'\n";
